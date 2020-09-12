@@ -1,0 +1,36 @@
+/* .header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: rgb(6, 35, 58);
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.dropdown-container {
+ width: 500px;
+  height: 30px;
+}
+
+input {
+ width: 100%;
+}
+
+h1, li {
+  color: white;
+} */
+
+.icons {
+  display: flex;
+  flex-basis: 10rem;
+  justify-content: space-around;
+}
+
+.user-page-icon {
+  margin-top: 3.5px;
+}
+
+

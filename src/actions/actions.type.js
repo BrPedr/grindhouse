@@ -1,0 +1,5 @@
+export const SEARCH_MOVIES = "SEARCH_MOVIE";
+
+export const CONFIG_INSTANCE = "CONFIG_INSTANCE";
+
+export const SEARCH_TERM = "SEARCH_TERM";
