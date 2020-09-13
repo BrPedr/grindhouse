@@ -5,6 +5,8 @@ import { searchMovies } from "../../actions";
 
 import emtpyMovie from "../../assets/emtpyMovie.jpg";
 
+import Spinner from "../spinner/Spinner"
+
 import "./Input-dropdown.css";
 
 const InputDropdown = ({ searchMovies, search, movies }) => {
@@ -23,7 +25,7 @@ const InputDropdown = ({ searchMovies, search, movies }) => {
       }`}
     >
       {!movies.currentMovieSearch ? (
-        <div>Loading...</div>
+        <Spinner/>
       ) : (
         Object.values(movies.currentMovieSearch).map((movie) => (
           <div key={movie.id} className="movie-details">

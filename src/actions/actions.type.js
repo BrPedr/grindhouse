@@ -3,3 +3,7 @@ export const SEARCH_MOVIES = "SEARCH_MOVIE";
 export const CONFIG_INSTANCE = "CONFIG_INSTANCE";
 
 export const SEARCH_TERM = "SEARCH_TERM";
+
+export const RATED_MOVIES = "RATED_MOVIES";
+
+export const MOVIE_DETAILS = "MOVIE_DETAILS"

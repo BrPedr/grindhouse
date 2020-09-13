@@ -4,11 +4,11 @@ import styled from "styled-components";
 
 import Header from "./components/header/Header";
 import Homepage from "./pages/homepage/Homepage";
-// import Footer from "./components/footer/Footer";
+
+import "./App.css";
 
 const AppBackground = styled.div`
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
   background-color: #1f0a42;
 `;
 
@@ -16,12 +16,14 @@ const App = () => {
   return (
     <AppBackground>
       <Header />
-      <Switch>
-        <Route path="/" exact component={Homepage} />
-        {/* <div className="footer-container">
+      <div className="wrapper">
+        <Switch>
+          <Route path="/" exact component={Homepage} />
+          {/* <div className="footer-container">
         <Footer />
       </div> */}
-      </Switch>
+        </Switch>
+      </div>
     </AppBackground>
   );
 };

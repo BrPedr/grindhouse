@@ -1,18 +1,4 @@
-.container {
-  background-color: coral;
-  width: 1000px;
-  margin: 0 auto;
-}
-.top-movies-container,
-.new-releases-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  padding: 10px 0;
-}
-
-.movie-wrapper {
-  background-color: cornsilk;
-  width: 100px;
-  height: 100px;
+.poster-container {
+  /* height: 44em; */
+  background-color: aqua;
 }

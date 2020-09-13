@@ -1,5 +1,11 @@
 import { movieDbInstance } from "../apis/moviedb/movieDb";
-import { SEARCH_MOVIES, CONFIG_INSTANCE, SEARCH_TERM } from "./actions.type";
+import {
+  SEARCH_MOVIES,
+  CONFIG_INSTANCE,
+  SEARCH_TERM,
+  RATED_MOVIES,
+  MOVIE_DETAILS,
+} from "./actions.type";
 
 //typeOfSearch receives the string 'movie' or 'person'
 export const searchMovies = (query) => async (dispatch) => {
@@ -26,6 +32,28 @@ export const search = (query) => async (dispatch) => {
 
   dispatch({
     type: SEARCH_TERM,
+    payload: response,
+  });
+};
+
+export const getTopRatedMovies = () => async (dispatch) => {
+  const getMovies = await movieDbInstance.get("/movie/top_rated");
+
+  dispatch({
+    type: RATED_MOVIES,
+    payload: getMovies.data,
+  });
+};
+
+export const getMovieDetails = (id) => async (dispatch) => {
+  const response = await movieDbInstance.get(`/movie/${id}`, {
+    params: {
+      append_to_response: "videos, images",
+    },
+  });
+
+  dispatch({
+    type: MOVIE_DETAILS,
     payload: response,
   });
 };

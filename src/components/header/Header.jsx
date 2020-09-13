@@ -9,7 +9,7 @@ import { ReactComponent as UserPage } from "../../assets/bookmarks.svg";
 import "./Header.css";
 
 const StyledHeader = styled.header`
-  position: fixed;
+  position: sticky;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,6 +18,7 @@ const StyledHeader = styled.header`
   height: 100px;
   left: 0px;
   top: 0px;
+  z-index: 99;
 `;
 
 const Title = styled.h1`
