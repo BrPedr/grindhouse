@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {useEffect, useRef } from "react";
 import styled from "styled-components";
 
 import StyledInput from '../input/Input'
@@ -19,6 +19,7 @@ const StyledHeader = styled.header`
   left: 0px;
   top: 0px;
   z-index: 99;
+  background-color: #1f0a42;
 `;
 
 const Title = styled.h1`
@@ -41,7 +42,7 @@ const Header = () => {
      return () => {
        document.removeEventListener("mousedown", handleClickOutside);
      };
-   }, [wrapperRef]);
+   });
 
    const setHiddenStyle = (currentRef, containsEvent, isTheChildrenHidden) => {
      if (!isTheChildrenHidden[1]) {

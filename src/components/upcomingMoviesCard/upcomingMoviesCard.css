@@ -1,0 +1,72 @@
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 4%;
+}
+
+.box-title,
+.more-movies,
+.title {
+  font-family: "Roboto", sans-serif;
+}
+
+.box-title,
+.more-movies {
+  text-transform: uppercase;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.box-title,
+.title {
+  color: black;
+}
+
+.more-movies {
+  color: #0da199;
+  font-weight: bold;
+  font-size: 1.3em;
+  text-decoration: none;
+  padding: 10px 0 30px 0;
+  border-bottom: 5px solid;
+  letter-spacing: 2px;
+}
+
+.box-title {
+  font-weight: 900;
+  font-size: 3em;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+.upcoming-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 10vh;
+  overflow: hidden;
+}
+
+.movies-container {
+  display: flex;
+  width: 100vw;
+}
+
+.image-container {
+  background-color: #0da199;
+  width: 199px;
+  height: 262px;
+}
+
+.upcoming-container {
+  background-color: #ffffff;
+  height: 530px;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}

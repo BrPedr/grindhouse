@@ -5,6 +5,7 @@ import {
   SEARCH_TERM,
   RATED_MOVIES,
   MOVIE_DETAILS,
+  UPCOMING_MOVIES,
 } from "./actions.type";
 
 //typeOfSearch receives the string 'movie' or 'person'
@@ -54,6 +55,15 @@ export const getMovieDetails = (id) => async (dispatch) => {
 
   dispatch({
     type: MOVIE_DETAILS,
+    payload: response,
+  });
+};
+
+export const getUpcomingMovies = () => async (dispatch) => {
+  const response = await movieDbInstance.get("/movie/upcoming");
+
+  dispatch({
+    type: UPCOMING_MOVIES,
     payload: response,
   });
 };

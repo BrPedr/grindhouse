@@ -1,5 +1,7 @@
-h1,
-h3 {
+.movie-title,
+.description,
+.play-text,
+.year-and-duration {
   color: #f4f4f4;
   font-family: "Roboto", sans-serif;
   text-shadow: 2px 2px black;

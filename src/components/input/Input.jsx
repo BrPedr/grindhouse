@@ -6,7 +6,7 @@ import { search } from "../../actions";
 
 import InputDropdown from "../input-dropdown/Input-dropdown";
 
-import './Input.css'
+import "./Input.css";
 
 const StyledInput = styled.input`
   width: 524px;

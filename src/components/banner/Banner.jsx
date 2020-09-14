@@ -19,7 +19,7 @@ const Banner = ({
   const maxNumberOfMoviesInLoop = 10;
 
   useEffect(() => {
-    getTopRatedMovies("top_rated");
+    getTopRatedMovies();
   }, [getTopRatedMovies]);
 
   useEffect(() => {
@@ -55,13 +55,13 @@ const Banner = ({
         <div className="movie-info">
           <h1 className="movie-title">{moviesList.title}</h1>
           <div className="year-and-duration">
-            <h3>{moviesList.release_date}</h3>
+            <h3 className="release-date">{moviesList.release_date}</h3>
             {/* <h3 className="duration">1h30</h3> */}
           </div>
           <h3 className="description">{moviesList.overview}</h3>
           <div className="trailer">
             <PlayButton />
-            <h3 className="play-button">WATCH THE TRAILER</h3>
+            <h3 className="play-text">WATCH THE TRAILER</h3>
           </div>
         </div>
       </div>
@@ -76,6 +76,7 @@ const mapStateToProps = ({ topMovies, movieDetails }) => ({
   movieDetails,
 });
 
-export default connect(mapStateToProps, { getTopRatedMovies, getMovieDetails })(
-  Banner
-);
+export default connect(mapStateToProps, {
+  getTopRatedMovies,
+  getMovieDetails,
+})(Banner);
