@@ -50,19 +50,3 @@ export default connect(mapStateToProps, {
   getUpcomingMovies,
   getTrendingMovies,
 })(Homepage);
-
-// import React from "react";
-
-// import Banner from "../../components/banner/Banner";
-// import MoviesCard from "../../components/movies-card/MoviesCard";
-
-// import "./Homepage.css";
-
-// const Homepage = () => (
-//   <div>
-//     <Banner />
-//     <MoviesCard boxTitle={'Upcoming'}/>
-//   </div>
-// );
-
-// export default Homepage;

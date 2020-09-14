@@ -25,7 +25,7 @@ const InputDropdown = ({ searchMovies, search, movies }) => {
       }`}
     >
       {!movies.currentMovieSearch ? (
-        <Spinner/>
+        null
       ) : (
         Object.values(movies.currentMovieSearch).map((movie) => (
           <div key={movie.id} className="movie-details">

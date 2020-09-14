@@ -1,3 +1,22 @@
-.footer-container {
-    background-color: blueviolet;
+.moviedb {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.footer-icons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin-right: 5em;
+}
+
+.moviedb-text {
+  font-size: 1.5em;
+  white-space: nowrap;
 }

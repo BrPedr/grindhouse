@@ -37,14 +37,19 @@
   font-weight: normal;
   font-size: 24px;
   line-height: 28px;
-  flex-grow: 2;
+  margin-right: auto;
+  white-space: wrap;
+  overflow: hidden;
+  flex-shrink: 2;
 }
 
 .image-container {
-  min-width: 185px;
-  height: 104px;
+  max-width: 185px;
+  max-height: 104px;
   margin: 1em;
+  flex-grow: 2;
 }
+
 
 .poster {
   min-height: 100%;
@@ -54,6 +59,6 @@
 
 .emtpyMovie {
   height: 100%;
-  min-width: 100%;
+  width: 100%;
   object-fit: cover;
 }
