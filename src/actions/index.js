@@ -6,6 +6,7 @@ import {
   RATED_MOVIES,
   MOVIE_DETAILS,
   UPCOMING_MOVIES,
+  TRENDING_MOVIES
 } from "./actions.type";
 
 //typeOfSearch receives the string 'movie' or 'person'
@@ -64,6 +65,16 @@ export const getUpcomingMovies = () => async (dispatch) => {
 
   dispatch({
     type: UPCOMING_MOVIES,
+    payload: response,
+  });
+};
+
+// go to get-trending in the api again!
+export const getTrendingMovies = () => async (dispatch) => {
+  const response = await movieDbInstance.get("/trending/movie/week");
+
+  dispatch({
+    type: TRENDING_MOVIES,
     payload: response,
   });
 };

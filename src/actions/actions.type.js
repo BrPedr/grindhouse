@@ -6,6 +6,8 @@ export const SEARCH_TERM = "SEARCH_TERM";
 
 export const RATED_MOVIES = "RATED_MOVIES";
 
-export const MOVIE_DETAILS = "MOVIE_DETAILS"
+export const MOVIE_DETAILS = "MOVIE_DETAILS";
 
 export const UPCOMING_MOVIES = "UPCOMING_MOVIES";
+
+export const TRENDING_MOVIES = "TRENDING_MOVIES";
