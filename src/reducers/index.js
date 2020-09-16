@@ -7,6 +7,7 @@ import getTopRatedMoviesReducer from "./getTopRatedMoviesReducer";
 import getMovieDetailsReducer from "./getMovieDetailsReducer";
 import getUpcomingMovies from "./getUpcomingMovies.Reducer";
 import getTrendingMoviesReducer from "./getTrendingMoviesReducer";
+import getMovieCredits from "./getMovieCreditsReducer";
 
 export default combineReducers({
   search: searchTermReducer,
@@ -16,4 +17,5 @@ export default combineReducers({
   movieDetails: getMovieDetailsReducer,
   upcoming: getUpcomingMovies,
   trending: getTrendingMoviesReducer,
+  credits: getMovieCredits,
 });

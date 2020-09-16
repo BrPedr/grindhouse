@@ -8,6 +8,27 @@ import InputDropdown from "../input-dropdown/Input-dropdown";
 
 import "./Input.css";
 
+// const bounce = keyframes`
+// 0% {
+//   transform: translateY(-100px)
+// }
+// 46% {
+//   transform: translateY(0)
+// } 
+// 62% {
+//   transform: translateY(-15px)
+// }
+// 78% {
+//   transform: translateY(0px)
+// }
+// 85% {
+//   transform: translateY(-5px)
+// }
+// 100% {
+//   transform: translateY(0px)
+// }
+// `;
+
 const StyledInput = styled.input`
   width: 524px;
   height: 28px;
@@ -16,7 +37,8 @@ const StyledInput = styled.input`
   border: none;
   margin-bottom: 0.2em;
   outline: none;
-`;
+  `;
+  /* animation: ${bounce} 2.5s ease-in-out; */
 
 const Input = (props) => {
   const [term, setTerm] = useState("");
@@ -36,7 +58,7 @@ const Input = (props) => {
     if (debouncedTerm) {
       props.search(debouncedTerm);
     }
-  }, [debouncedTerm]);
+  }, [debouncedTerm, props]);
 
   return (
     <React.Fragment>

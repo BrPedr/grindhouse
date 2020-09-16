@@ -40,7 +40,7 @@
   margin-right: auto;
   white-space: wrap;
   overflow: hidden;
-  flex-shrink: 2;
+  flex-shrink: 10;
 }
 
 .image-container {

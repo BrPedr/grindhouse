@@ -1,7 +1,8 @@
-import React, {useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-import StyledInput from '../input/Input'
+import StyledInput from "../input/Input";
 
 import { ReactComponent as Home } from "../../assets/home.svg";
 import { ReactComponent as UserPage } from "../../assets/bookmarks.svg";
@@ -22,6 +23,24 @@ const StyledHeader = styled.header`
   background-color: #1f0a42;
 `;
 
+// const translateX = keyframes`
+// from {
+//   transform: translateX(-200px)
+// }
+// to {
+//   transform: translateX(0px)
+// }
+// `;
+
+// const translateXReverse = keyframes`
+// from {
+//   transform: translateX(200px)
+// }
+// to {
+//   transform: translateX(0px)
+// }
+// `;
+
 const Title = styled.h1`
   font-family: "M PLUS Rounded 1c", sans-serif;
   color: #d33694;
@@ -31,47 +50,60 @@ const Title = styled.h1`
   font-size: 48px;
   line-height: 71px;
   text-transform: uppercase;
-`;
+  text-decoration: none;
+  `;
+  /* animation: ${translateX} 1.5s ease-in-out; */
+
+const Icons = styled.div`
+  display: flex;
+  flex-basis: 10rem;
+  justify-content: space-around;
+  `;
+  /* animation: ${translateXReverse} 1.5s ease-in-out; */
 
 const Header = () => {
   const wrapperRef = useRef(null);
-  
-   useEffect(() => {
-     document.addEventListener("mousedown", handleClickOutside);
 
-     return () => {
-       document.removeEventListener("mousedown", handleClickOutside);
-     };
-   });
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
 
-   const setHiddenStyle = (currentRef, containsEvent, isTheChildrenHidden) => {
-     if (!isTheChildrenHidden[1]) {
-       return;
-     }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
 
-     if (currentRef && !containsEvent && isTheChildrenHidden) {
-       return (isTheChildrenHidden[1].style.visibility = "hidden");
-     }
-     return (isTheChildrenHidden[1].style.visibility = "visible");
-   };
+  const setHiddenStyle = (currentRef, containsEvent, isTheChildrenHidden) => {
+    if (!isTheChildrenHidden[1]) {
+      return;
+    }
 
-   const handleClickOutside = (event) => {
-     const { current } = wrapperRef;
-     const { children } = wrapperRef.current;
-
-     setHiddenStyle(current, current.contains(event.target), children);
+    if (currentRef && !containsEvent && isTheChildrenHidden) {
+      return (isTheChildrenHidden[1].style.visibility = "hidden");
+    }
+    return (isTheChildrenHidden[1].style.visibility = "visible");
   };
-  
+
+  const handleClickOutside = (event) => {
+    const { current } = wrapperRef;
+    const { children } = wrapperRef.current;
+
+    setHiddenStyle(current, current.contains(event.target), children);
+  };
+
   return (
     <StyledHeader>
-      <Title>Grindhouse</Title>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <Title>Grindhouse</Title>
+      </Link>
       <div className="dropdown-container" ref={wrapperRef}>
         <StyledInput />
       </div>
-      <div className="icons">
-        <Home />
+      <Icons>
+        <Link to="/">
+          <Home styled={{ cursor: "pointer" }} />
+        </Link>
         <UserPage className="user-page-icon" />
-      </div>
+      </Icons>
     </StyledHeader>
   );
 };

@@ -17,7 +17,7 @@ const Homepage = ({
   useEffect(() => {
     getUpcomingMovies();
     getTrendingMovies();
-  }, [getUpcomingMovies]);
+  }, [getUpcomingMovies, getTrendingMovies]);
 
   return (
     <div>

@@ -6,14 +6,19 @@ import {
   RATED_MOVIES,
   MOVIE_DETAILS,
   UPCOMING_MOVIES,
-  TRENDING_MOVIES
+  TRENDING_MOVIES,
+  MOVIE_CREDITS,
 } from "./actions.type";
 
 //typeOfSearch receives the string 'movie' or 'person'
-export const searchMovies = (query) => async (dispatch) => {
+export const searchMovies = (query, year) => async (dispatch) => {
   const response = await movieDbInstance
     .get("/search/movie", {
-      params: { query: `${query}` },
+      params: {
+        query: `${query}`,
+        include_adult: true,
+        year,
+      },
     })
     .then((data) => data);
 
@@ -50,12 +55,25 @@ export const getTopRatedMovies = () => async (dispatch) => {
 export const getMovieDetails = (id) => async (dispatch) => {
   const response = await movieDbInstance.get(`/movie/${id}`, {
     params: {
-      append_to_response: "videos, images",
+      append_to_response: "videos,images,release_dates",
     },
   });
 
   dispatch({
     type: MOVIE_DETAILS,
+    payload: response,
+  });
+};
+
+export const getMovieCredits = (id) => async (dispatch) => {
+  const response = await movieDbInstance.get(`/movie/${id}/credits`, {
+    params: {
+      append_to_response: "videos,images",
+    },
+  });
+
+  dispatch({
+    type: MOVIE_CREDITS,
     payload: response,
   });
 };

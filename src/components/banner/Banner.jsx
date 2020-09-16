@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { getTopRatedMovies, getMovieDetails } from "../../actions/index";
 
@@ -16,6 +17,7 @@ const Banner = ({
   movieDetails,
 }) => {
   const [counter, setCounter] = useState(0);
+  const isMountedRef = useRef(null);
   const maxNumberOfMoviesInLoop = 10;
 
   useEffect(() => {
@@ -23,11 +25,17 @@ const Banner = ({
   }, [getTopRatedMovies]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setCounter(counter + 1);
-    }, 4500);
-  });
+    isMountedRef.current = true;
+    const timer = () =>
+      setTimeout(() => {
+        setCounter(counter + 1);
+      }, 4500);
 
+    if (isMountedRef.current) {
+      timer();
+    }
+    return () => clearTimeout(timer);
+  });
   // useEffect(() => {
   //   if (!topMovies.movies) {
   //     return;
@@ -47,11 +55,14 @@ const Banner = ({
 
     return (
       <div className="container">
-        <img
-          className="poster"
-          src={`https://image.tmdb.org/t/p/original${moviesList.backdrop_path}`}
-          alt=""
-        />
+        <Link to={`/movie-details/${moviesList.id}`}>
+          <img
+            ref={isMountedRef}
+            className="poster"
+            src={`https://image.tmdb.org/t/p/original${moviesList.backdrop_path}`}
+            alt=""
+          />
+        </Link>
         <div className="movie-info">
           <h1 className="movie-title">{moviesList.title}</h1>
           <div className="year-and-duration">
@@ -60,7 +71,7 @@ const Banner = ({
           </div>
           <h3 className="description">{moviesList.overview}</h3>
           <div className="trailer">
-            <PlayButton />
+            <PlayButton className="play-button" />
             <h3 className="play-text">WATCH THE TRAILER</h3>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import {Link} from 'react-router-dom'
 
 import { getUpcomingMovies } from "../../actions/index";
 
@@ -17,9 +18,9 @@ const UpcomingMoviesCard = ({ getUpcomingMovies, upcoming }) => {
     <div className="upcoming-container">
       <div className="text">
         <h1 className="box-title">Upcoming</h1>
-        <a href="#" className="more-movies">
+        <Link to="/more-movies" className="more-movies">
           Browse more top movies
-        </a>
+        </Link>
       </div>
       <div>
         <div className="movies-container">

@@ -31,6 +31,7 @@ h1, li {
 
 .user-page-icon {
   margin-top: 3.5px;
+  cursor: pointer;
 }
 
 

@@ -1,11 +1,10 @@
 import React, { useEffect} from "react";
 import { connect } from "react-redux";
+import {Link} from 'react-router-dom'
 
 import { searchMovies } from "../../actions";
 
 import emtpyMovie from "../../assets/emtpyMovie.jpg";
-
-import Spinner from "../spinner/Spinner"
 
 import "./Input-dropdown.css";
 
@@ -16,7 +15,7 @@ const InputDropdown = ({ searchMovies, search, movies }) => {
     }
 
     return () => movies.currentMovieSearch;
-  }, [search]);
+  }, [search.currentSearch]);
 
   return (
     <div
@@ -29,6 +28,7 @@ const InputDropdown = ({ searchMovies, search, movies }) => {
       ) : (
         Object.values(movies.currentMovieSearch).map((movie) => (
           <div key={movie.id} className="movie-details">
+            <Link to={`/movie-details/${movie.id}`}>
             {movie.backdrop_path !== null ? (
               <div className="image-container">
                 <img
@@ -45,7 +45,7 @@ const InputDropdown = ({ searchMovies, search, movies }) => {
                   className="emtpyMovie"
                 ></img>
               </div>
-            )}
+            )}</Link>
             <h5 className="title">{movie.title}</h5>
           </div>
         ))
