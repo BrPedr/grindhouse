@@ -82,3 +82,9 @@ general-container_Details
   width: 67px;
   height: 5px;
 }
+
+@media (max-width: 1120px) {
+  .ratings-Details  {
+   display: none;
+  }
+}

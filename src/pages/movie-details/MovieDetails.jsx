@@ -20,7 +20,6 @@ const MovieDetails = ({
   const id = window.location.pathname.substr(15);
 
   useEffect(() => {
-    console.log(id);
     getMovieDetails(id);
     getMovieCredits(id);
   }, [id, getMovieDetails, getMovieCredits]);
@@ -90,19 +89,20 @@ const MovieDetails = ({
             alt="trailer"
           />
           {!movie.videos.results[0] ? null : (
-          <iframe
-            title="trailer"
-            width="100%"
-            height="100%"
-            src={`https://www.youtube.com/embed/${movie.videos.results[0].key}`}
-            allowFullScreen="allowfullscreen"
-            mozallowfullscreen="mozallowfullscreen"
-            msallowfullscreen="msallowfullscreen"
-            oallowfullscreen="oallowfullscreen"
-            webkitallowfullscreen="webkitallowfullscreen"
-            frameBorder="0"
-            className={`${!play ? "inactive poster" : "active"} `}
-          />)}
+            <iframe
+              title="trailer"
+              width="100%"
+              height="100%"
+              src={`https://www.youtube.com/embed/${movie.videos.results[0].key}`}
+              allowFullScreen="allowfullscreen"
+              mozallowfullscreen="mozallowfullscreen"
+              msallowfullscreen="msallowfullscreen"
+              oallowfullscreen="oallowfullscreen"
+              webkitallowfullscreen="webkitallowfullscreen"
+              frameBorder="0"
+              className={`${!play ? "inactive poster" : "active"} `}
+            />
+          )}
           <div
             className={`${!play ? "active movie-info-Details" : "inactive"} `}
           >
@@ -123,7 +123,9 @@ const MovieDetails = ({
         </div>
         <div></div>
         <div className="year-and-duration-Details">
-          <h3 className="release-date-Details">{movie.release_date}</h3>
+          <h3 className="release-date-Details">
+            {movie.release_date.substr(-10, 4)}
+          </h3>
           <h3 className="dot-Details">.</h3>
           <h3 className="duration-Details">{movie.runtime}min</h3>
           <h3 className="dot-Details">.</h3>

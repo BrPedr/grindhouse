@@ -11,7 +11,8 @@
 .play-text-Details,
 .year-and-duration-Details,
 .director-Details,
-.genres-Details, .ratings-title-Details {
+.genres-Details,
+.ratings-title-Details {
   color: #f4f4f4;
   font-family: "Roboto", sans-serif;
   text-shadow: 2px 2px black;
@@ -132,4 +133,41 @@
   border: 3px solid;
   border-radius: 10%;
   padding: 0.5em;
+}
+
+@media (max-width: 1120px) {
+  .title-and-director-Details,
+  .trailer-Details {
+    width: 100%;
+    margin: 0;
+  }
+
+  .trailer-Details {
+    justify-content: flex-end;
+    margin-right: 2em;
+  }
+  .title-and-director-Details {
+    margin-left: 2em;
+  }
+
+  .movie-title-Details {
+    font-size: 2em;
+  }
+
+  .director-Details {
+    font-size: 0.5em;
+  }
+
+  .play-text-Details {
+    display: none;
+  }
+
+  .genres-Details {
+    flex-wrap: wrap;
+    padding: 0 10px;
+    line-height: 0;
+  }
+  .ratings-title-Details {
+    padding-left: 20px;
+  }
 }

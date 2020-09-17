@@ -25,6 +25,12 @@ export const Slide = styled.div`
   width: 199px;
   height: 262px;
   margin-left: 2.5em;
+
+  @media (max-width: 1120px) {
+    width: 130px;
+    height: 192px;
+    margin-left: 0.6em;
+  }
 `;
 
 const Arrows = styled.div`
@@ -56,6 +62,12 @@ const CardBox = styled.div`
   overflow: hidden;
   background-color: ${(props) => (props.primary ? "#ffffff" : "")};
   height: 500px;
+
+  @media (max-width: 1120px) {
+    height: 340px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 // const BoxTitle = styled.h1`
@@ -132,21 +144,25 @@ const MoviesCard = ({ boxTitle, reducerResponse, primary }) => {
     </Slide>
   ));
 
-  return (<>
+  return (
+    <>
       <h2 className="ratings-title-Details">Cast</h2>
-    <CardBox primary={primary}>
-        <Container style={{paddingBottom: "100px"}}>{renderSlide}</Container>
+      <CardBox primary={primary}>
+        <Container style={{ paddingBottom: "100px" }}>{renderSlide}</Container>
         <Arrows>
           <ArrowLeft
+            id="arrow-left"
             onClick={() => goToPrevSlide()}
             style={{ cursor: "pointer" }}
           />
           <ArrowRight
+            id="arrow-right"
             style={{ marginLeft: "35px", cursor: "pointer" }}
             onClick={() => goToNextSlide()}
           />
         </Arrows>
-    </CardBox></>
+      </CardBox>
+    </>
   );
 };
 export default MoviesCard;

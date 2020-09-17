@@ -17,6 +17,13 @@ const Banner = ({ getTopRatedMovies, topMovies }) => {
 
   useEffect(() => {
     getTopRatedMovies();
+
+    if (!topMovies.movies) {
+      return;
+    }
+    
+    const {id} = topMovies.movies.results[counter];
+    getMovieDetails(id);
   }, [getTopRatedMovies]);
 
   useEffect(() => {

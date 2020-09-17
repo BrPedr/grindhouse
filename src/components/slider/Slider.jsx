@@ -7,6 +7,8 @@ import { ReactComponent as ArrowLeft } from "../../assets/arrow-left.svg";
 
 import ImageCard from "../image-card/ImageCard"
 
+import "./Slider.css"
+
 export const ContainerFlex = styled.div`
   display: flex;
   flex-direction: row;
@@ -43,8 +45,8 @@ export const Slide = styled.div`
 const Arrows = styled.div`
   position: absolute;
   right: 3%;
-  bottom: 3%;
-  }
+  bottom: 2%;
+  
 `;
 
 // export const Image = styled.img`
@@ -89,43 +91,45 @@ const Slider = ({ reducerResponse, primary }) => {
 
   return reducerResponse.map((movie, index) => (
     <>
-        <Slide
-          key={index}
-          // activeIndex={() => activeIndex}
-          className={
-            index === activeIndex ||
-            index === activeIndex + 1 ||
-            index === activeIndex + 2 ||
-            index === activeIndex + 3 ||
-            index === activeIndex + 4 ||
-            index === activeIndex + 5 ||
-            index === activeIndex + 6 ||
-            index === activeIndex + 7 ||
-            index === activeIndex + 8 ||
-            index === activeIndex + 9
-              ? "active"
-              : "inactive"
-          }
-        >
-          <Link to={`/movie-details/${movie.id}`}>
-            {/* <Image
+      <Slide
+        key={index}
+        // activeIndex={() => activeIndex}
+        className={
+          index === activeIndex ||
+          index === activeIndex + 1 ||
+          index === activeIndex + 2 ||
+          index === activeIndex + 3 ||
+          index === activeIndex + 4 ||
+          index === activeIndex + 5 ||
+          index === activeIndex + 6 ||
+          index === activeIndex + 7 ||
+          index === activeIndex + 8 ||
+          index === activeIndex + 9
+            ? "active"
+            : "inactive"
+        }
+      >
+        <Link to={`/movie-details/${movie.id}`}>
+          {/* <Image
               key={movie.id}
               src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
               alt="movie"
             /> */}
-            <ImageCard
-              movieId={movie.id}
-              movieUrl={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
-            />
-          </Link>
-          <Title primary={primary}>{movie.title}</Title>
-        </Slide>
+          <ImageCard
+            movieId={movie.id}
+            movieUrl={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+          />
+        </Link>
+        <Title primary={primary}>{movie.title}</Title>
+      </Slide>
       <Arrows>
         <ArrowLeft
+          id="arrow-left"
           onClick={() => goToPrevSlide()}
           style={{ cursor: "pointer" }}
         />
         <ArrowRight
+          id="arrow-right"
           style={{ marginLeft: "35px", cursor: "pointer" }}
           onClick={() => goToNextSlide()}
         />

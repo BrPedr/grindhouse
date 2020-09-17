@@ -1,0 +1,5 @@
+  @media (max-width: 1120px) {
+    #arrow-left, #arrow-right {
+        width: 30px;
+    }
+  }

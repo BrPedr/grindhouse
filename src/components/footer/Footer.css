@@ -21,6 +21,10 @@
   white-space: nowrap;
 }
 
+#git, #linkedin {
+  cursor: pointer;
+}
+
 @media (max-width: 1120px) {
   .icons {
     width: 60px;

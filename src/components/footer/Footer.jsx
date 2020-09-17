@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom"
 
 import { ReactComponent as MovieDbLogo } from "../../assets/moviedb_logo.svg";
 import { ReactComponent as Github } from "../../assets/github.svg";
@@ -60,8 +61,16 @@ const Footer = () => {
       </Contact>
       <div className="footer-icons">
         <div className="git-and-linkedin">
-          <Github id="git" width="50px" />
-          <Linkedin id="linkedin" width="50px" style={{ marginLeft: "10px" }} />
+          <a href="https://github.com/BrPedr">
+            <Github id="git" width="50px" />
+          </a>
+          <a href="https://www.linkedin.com/in/bruno-pedrosa-6587251b3/">
+            <Linkedin
+              id="linkedin"
+              width="50px"
+              style={{ marginLeft: "10px" }}
+            />
+          </a>
         </div>
         <div className="moviedb">
           <h5 className="moviedb-text">Powered by</h5>
