@@ -1,3 +1,9 @@
 .wrapper {
   margin: 0 3em;
 }
+
+@media(max-width: 1040px) {
+  .wrapper {
+    margin: 0;
+  }
+}

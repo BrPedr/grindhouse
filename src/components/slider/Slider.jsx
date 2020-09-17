@@ -7,15 +7,20 @@ import { ReactComponent as ArrowLeft } from "../../assets/arrow-left.svg";
 
 import ImageCard from "../image-card/ImageCard"
 
-export const Container = styled.div`
+export const ContainerFlex = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 1120px) {
+    flex-wrap: wrap;
+    width: 100%;
+  }
 `;
 
 const Title = styled.div`
   color: ${(props) => (props.primary ? "black" : "#d33694")};
   width: 100%;
-  white-space: nowrap;
+  white-space: wrap;
   font-family: "Roboto", sans-serif;
   text-align: center;
   font-weight: 500;
@@ -27,12 +32,19 @@ export const Slide = styled.div`
   width: 199px;
   height: 262px;
   margin-left: 2.5em;
+
+  @media (max-width: 1120px) {
+    width: 130px;
+    height: 192px;
+    margin-left: 0.6em;
+  }
 `;
 
 const Arrows = styled.div`
   position: absolute;
   right: 3%;
   bottom: 3%;
+  }
 `;
 
 // export const Image = styled.img`
@@ -77,7 +89,6 @@ const Slider = ({ reducerResponse, primary }) => {
 
   return reducerResponse.map((movie, index) => (
     <>
-      <Container>
         <Slide
           key={index}
           // activeIndex={() => activeIndex}
@@ -109,7 +120,6 @@ const Slider = ({ reducerResponse, primary }) => {
           </Link>
           <Title primary={primary}>{movie.title}</Title>
         </Slide>
-      </Container>
       <Arrows>
         <ArrowLeft
           onClick={() => goToPrevSlide()}

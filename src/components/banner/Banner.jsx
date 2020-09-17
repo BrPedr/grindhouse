@@ -10,10 +10,7 @@ import Spinner from "../spinner/Spinner";
 
 import "./Banner.css";
 
-const Banner = ({
-  getTopRatedMovies,
-  topMovies,
-}) => {
+const Banner = ({ getTopRatedMovies, topMovies }) => {
   const [counter, setCounter] = useState(0);
   const isMountedRef = useRef(null);
   const maxNumberOfMoviesInLoop = 10;
@@ -60,19 +57,22 @@ const Banner = ({
             src={`https://image.tmdb.org/t/p/original${moviesList.backdrop_path}`}
             alt=""
           />
+
+          <div className="movie-info">
+            <h1 className="movie-title">{moviesList.title}</h1>
+            <div className="year-and-duration">
+              <h3 className="release-date">
+                {moviesList.release_date.substr(-10, 4)}
+              </h3>
+              {/* <h3 className="duration">1h30</h3> */}
+            </div>
+            <h3 className="description">{moviesList.overview}</h3>{" "}
+            <div className="trailer">
+              <PlayButton className="play-button" />
+              <h3 className="play-text">WATCH THE TRAILER</h3>
+            </div>
+          </div>
         </Link>
-        <div className="movie-info">
-          <h1 className="movie-title">{moviesList.title}</h1>
-          <div className="year-and-duration">
-            <h3 className="release-date">{moviesList.release_date}</h3>
-            {/* <h3 className="duration">1h30</h3> */}
-          </div>
-          <h3 className="description">{moviesList.overview}</h3>
-          <div className="trailer">
-            <PlayButton className="play-button" />
-            <h3 className="play-text">WATCH THE TRAILER</h3>
-          </div>
-        </div>
       </div>
     );
   };

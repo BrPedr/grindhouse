@@ -15,6 +15,10 @@ const StyledFooter = styled.footer`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
+  @media (max-width: 1120px) {
+    height: 12em;
+  }
 `;
 
 const Contact = styled.div`
@@ -25,6 +29,11 @@ const Contact = styled.div`
   letter-spacing: 0.125em;
   width: 50%;
   margin-top: 1em;
+
+  @media (max-width: 1120px) {
+    width: 50%;
+    margin-left: -5px;
+  }
 `;
 
 const Text = styled.h5`
@@ -34,6 +43,11 @@ const Text = styled.h5`
   font-size: 1em;
   line-height: 1em;
   margin: 1em;
+
+  @media (max-width: 1120px) {
+    font-size: 0.8em;
+    margin: 0.1 0 0 0;
+  }
 `;
 
 const Footer = () => {
@@ -43,17 +57,18 @@ const Footer = () => {
         <Text>Made by Bruno Pedrosa</Text>
         <Text>Email: brunofellipep@gmail.com</Text>
         <Text>Phone: +55 82 996048003</Text>
-        <Text>Copyright 2020</Text>
       </Contact>
       <div className="footer-icons">
-        <div className="git-and-linkeding">
-          <Github />
-          <Linkedin style={{ marginLeft: "30px" }} />
+        <div className="git-and-linkedin">
+          <Github id="git" width="50px" />
+          <Linkedin id="linkedin" width="50px" style={{ marginLeft: "10px" }} />
         </div>
         <div className="moviedb">
           <h5 className="moviedb-text">Powered by</h5>
           <MovieDbLogo
-            style={{ width: "100px", marginLeft: "1em" }}
+            className="moviedblogo"
+            width="100px"
+            style={{ marginLeft: "1em" }}
           ></MovieDbLogo>
         </div>
       </div>

@@ -34,4 +34,13 @@ h1, li {
   cursor: pointer;
 }
 
+@media (max-width: 1120px) {
+   .user-page-icon {
+     width: 24px;
+     margin-left: -30px;
+   }
 
+   #home-icon {
+     width: 35px;
+   }
+  }

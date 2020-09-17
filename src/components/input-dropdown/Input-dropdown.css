@@ -32,7 +32,7 @@
 }
 
 .movie-details:hover {
-background-color: #f8f8f8;
+  background-color: #f8f8f8;
 }
 
 .title {
@@ -54,7 +54,6 @@ background-color: #f8f8f8;
   flex-grow: 2;
 }
 
-
 .poster {
   min-height: 100%;
   min-width: 100%;
@@ -65,4 +64,25 @@ background-color: #f8f8f8;
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+@media (max-width: 1120px) {
+  .movie-details,
+  .search-dropdown {
+    width: 100%;
+  }
+
+  .movie-details{
+    height: 6em;
+  }
+  .image-container {
+    max-width: 145px;
+    max-height: 80px;
+    margin: 0.4em;
+  }
+
+  .title {
+    margin-left: 8px;
+    font-size: 20px;
+  }
 }

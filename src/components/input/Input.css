@@ -2,3 +2,14 @@
   text-align: center;
   font-size: 1.4em;
 }
+
+/* .dropdown-container {
+  width: 100%;
+  margin: 0 5px;
+} */
+
+@media (max-width: 1120px) {
+    [placeholder] {
+      font-size: 1em;
+    }
+  }

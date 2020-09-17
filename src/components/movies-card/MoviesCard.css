@@ -4,3 +4,14 @@
 .active {
   display: block;
 }
+
+ @media (max-width: 1120px) {
+    .text {
+      width: 100%;
+    }
+
+    .more-movies{
+      display: none;
+    }
+
+  }

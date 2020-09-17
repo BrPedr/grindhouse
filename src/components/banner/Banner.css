@@ -45,7 +45,7 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
-  filter:  brightness(0.4)
+  filter: brightness(0.4);
 }
 
 .top-movies-carousel {
@@ -84,4 +84,43 @@
 
 .play-text {
   margin-left: 1em;
+}
+
+@media (max-width: 1120px) {
+  /* .container {
+    display: none;
+  } */
+  .description,
+  .play-text {
+    display: none;
+  }
+
+  .movie-info {
+    right: 5%;
+    width: 50%;
+    font-size: 0.5em;
+    align-items: flex-end;
+  }
+
+  .trailer, .movie-title {
+    justify-content: flex-end;
+  }
+
+  .play-button{
+    width: 50%;
+  }
+  
+  .movie-title {
+    text-align: end;
+  }
+
+  .year-and-duration {
+    font-size: 1.5em;
+  }
+
+  .container {
+  background-color: white;
+  height: 20em;
+}
+
 }

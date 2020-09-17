@@ -21,6 +21,10 @@ const StyledHeader = styled.header`
   top: 0px;
   z-index: 99;
   background-color: #1f0a42;
+
+  @media (max-width: 1120px) {
+   height: 3em;
+  }
 `;
 
 // const translateX = keyframes`
@@ -51,6 +55,10 @@ const Title = styled.h1`
   line-height: 71px;
   text-transform: uppercase;
   text-decoration: none;
+
+  @media(max-width:1120px) {
+    display: none;
+  }
 `;
 /* animation: ${translateX} 1.5s ease-in-out; */
 
@@ -58,6 +66,10 @@ const Icons = styled.div`
   display: flex;
   flex-basis: 10rem;
   justify-content: space-around;
+
+  @media (max-width: 1120px) {
+    justify-content: space-around;
+  }
 `;
 /* animation: ${translateXReverse} 1.5s ease-in-out; */
 
@@ -70,7 +82,7 @@ const Header = () => {
       <StyledInput />
       <Icons>
         <Link to="/">
-          <Home styled={{ cursor: "pointer" }} />
+          <Home styled={{ cursor: "pointer" }} id="home-icon"/>
         </Link>
         <UserPage className="user-page-icon" />
       </Icons>

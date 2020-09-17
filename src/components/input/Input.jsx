@@ -30,13 +30,22 @@ import "./Input.css";
 // `;
 
 const StyledInput = styled.input`
-  width: 524px;
+  width: 23.3em;
   height: 28px;
   background: #f4f4f4;
   border-radius: 20px;
   border: none;
   margin-bottom: 0.2em;
   outline: none;
+
+  @media (max-width: 1120px) {
+    height: 20px;
+  }
+
+  @media (max-width: 630px) {
+    width: 15em;
+    height: 20px;
+  }
 `;
 /* animation: ${bounce} 2.5s ease-in-out; */
 

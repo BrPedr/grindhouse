@@ -14,6 +14,12 @@ const CardBox = styled.div`
   overflow: hidden;
   background-color: ${(props) => (props.primary ? "#ffffff" : "")};
   height: 500px;
+
+  @media (max-width: 1120px) {
+    height: 340px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const BoxTitle = styled.h1`
@@ -26,20 +32,26 @@ const BoxTitle = styled.h1`
   letter-spacing: 4px;
   text-align: center;
   color: ${(props) => (props.primary ? "black" : "#d33694")};
+
+  @media (max-width: 1120px) {
+    font-size: 1em;
+    text-align: start;
+    margin-left: 2.5em;
+  }
 `;
 
 const MoviesCard = ({ boxTitle, primary, children }) => {
    return (
-    <CardBox primary={primary}>
-      <div className="text">
-        <BoxTitle primary={primary}>{boxTitle}</BoxTitle>
-        <Link to="/more-movies" className="more-movies">
-          {` Browse more ${boxTitle} movies`}
-        </Link>
-      </div>
-        {children}
-    </CardBox>
-  );
+     <CardBox primary={primary}>
+       <div className="text">
+         <BoxTitle primary={primary}>{boxTitle}</BoxTitle>
+         <Link to="/more-movies" className="more-movies">
+           {` Browse more ${boxTitle} movies`}
+         </Link>
+       </div>
+       <div className="container-slider" style={{display: 'flex'}}>{children}</div>
+     </CardBox>
+   );
 };
 export default MoviesCard;
 
