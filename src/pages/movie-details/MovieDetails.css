@@ -79,6 +79,8 @@
   font-size: 3em;
   font-weight: bold;
   line-height: 1em;
+  white-space: wrap;
+  max-width: 550px;
 
   text-transform: uppercase;
 }

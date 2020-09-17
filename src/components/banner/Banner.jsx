@@ -12,9 +12,7 @@ import "./Banner.css";
 
 const Banner = ({
   getTopRatedMovies,
-  getMovieDetails,
   topMovies,
-  movieDetails,
 }) => {
   const [counter, setCounter] = useState(0);
   const isMountedRef = useRef(null);
@@ -82,12 +80,10 @@ const Banner = ({
   return <React.Fragment>{renderBannerLoop()}</React.Fragment>;
 };
 
-const mapStateToProps = ({ topMovies, movieDetails }) => ({
+const mapStateToProps = ({ topMovies }) => ({
   topMovies,
-  movieDetails,
 });
 
 export default connect(mapStateToProps, {
   getTopRatedMovies,
-  getMovieDetails,
 })(Banner);

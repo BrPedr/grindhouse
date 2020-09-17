@@ -1,6 +1,6 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 import { searchMovies } from "../../actions";
 
@@ -23,33 +23,32 @@ const InputDropdown = ({ searchMovies, search, movies }) => {
         !movies.currentMovieSearch ? null : "search-dropdown-visible"
       }`}
     >
-      {!movies.currentMovieSearch ? (
-        null
-      ) : (
-        Object.values(movies.currentMovieSearch).map((movie) => (
-          <div key={movie.id} className="movie-details">
-            <Link to={`/movie-details/${movie.id}`}>
-            {movie.backdrop_path !== null ? (
-              <div className="image-container">
-                <img
-                  src={`https://image.tmdb.org/t/p/w185${movie.backdrop_path}`}
-                  alt={movie.title}
-                  className="poster"
-                />
+      {!movies.currentMovieSearch
+        ? null
+        : Object.values(movies.currentMovieSearch).map((movie) => (
+            <Link to={`/movie-details/${movie.id}`} style={{textDecoration: "none"}}>
+              <div key={movie.id} className="movie-details">
+                {movie.backdrop_path !== null ? (
+                  <div className="image-container">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w185${movie.backdrop_path}`}
+                      alt={movie.title}
+                      className="poster"
+                    />
+                  </div>
+                ) : (
+                  <div className="image-container">
+                    <img
+                      src={emtpyMovie}
+                      alt={movie.title}
+                      className="emtpyMovie"
+                    ></img>
+                  </div>
+                )}
+                <h5 className="title">{movie.title}</h5>
               </div>
-            ) : (
-              <div className="image-container">
-                <img
-                  src={emtpyMovie}
-                  alt={movie.title}
-                  className="emtpyMovie"
-                ></img>
-              </div>
-            )}</Link>
-            <h5 className="title">{movie.title}</h5>
-          </div>
-        ))
-      )}
+            </Link>
+          ))}
     </div>
   );
 };

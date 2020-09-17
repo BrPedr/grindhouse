@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { ReactComponent as ArrowRight } from "../../assets/arrow-right.svg";
 import { ReactComponent as ArrowLeft } from "../../assets/arrow-left.svg";
 
+import emtpyMovie from "../../assets/emtpyMovie.jpg";
+
 export const Container = styled.div`
   display: flex;
 `;
@@ -20,7 +22,6 @@ const Title = styled.div`
 `;
 
 export const Slide = styled.div`
-  background-color: #0da199;
   width: 199px;
   height: 262px;
   margin-left: 2.5em;
@@ -37,6 +38,7 @@ export const Image = styled.img`
   width: 100%;
   height: 100%;
   filter: brightness(0.6);
+  box-shadow: 5px 5px 10px #1f0a42; 
 
   &:hover {
     filter: brightness(1.1);
@@ -56,17 +58,17 @@ const CardBox = styled.div`
   height: 500px;
 `;
 
-const BoxTitle = styled.h1`
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  width: 100%;
-  white-space: nowrap;
-  font-weight: 900;
-  font-size: 3em;
-  letter-spacing: 4px;
-  text-align: center;
-  color: ${(props) => (props.primary ? "black" : "#d33694")};
-`;
+// const BoxTitle = styled.h1`
+//   font-family: "Roboto", sans-serif;
+//   text-transform: uppercase;
+//   width: 100%;
+//   white-space: nowrap;
+//   font-weight: 900;
+//   font-size: 3em;
+//   letter-spacing: 4px;
+//   text-align: center;
+//   color: ${(props) => (props.primary ? "black" : "#d33694")};
+// `;
 
 const MoviesCard = ({ boxTitle, reducerResponse, primary }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -115,23 +117,25 @@ const MoviesCard = ({ boxTitle, reducerResponse, primary }) => {
       }
     >
       <Link to={`/movie-details/${movie.id}`}>
-        <Image
-          key={movie.id}
-          src={`https://image.tmdb.org/t/p/w185${movie.profile_path}`}
-          alt="movie"
-        />
+        {movie.profile_path !== null ? (
+          <Image
+            key={movie.id}
+            src={`https://image.tmdb.org/t/p/w185${movie.profile_path}`}
+            alt="actor"
+          />
+        ) : (
+          <Image key={movie.id} src={emtpyMovie} alt="actor" />
+        )}
       </Link>
-      <Title primary={primary}>{movie.title}</Title>
+      <Title primary={primary}>{movie.name}&nbsp;&nbsp;&nbsp; as</Title>
+      <Title primary={primary}>{movie.character}</Title>
     </Slide>
   ));
 
-  return (
+  return (<>
+      <h2 className="ratings-title-Details">Cast</h2>
     <CardBox primary={primary}>
-      <div className="text">
-        <BoxTitle primary={primary}>{boxTitle}</BoxTitle>
-       </div>
-      <div>
-        <Container>{renderSlide}</Container>
+        <Container style={{paddingBottom: "100px"}}>{renderSlide}</Container>
         <Arrows>
           <ArrowLeft
             onClick={() => goToPrevSlide()}
@@ -142,8 +146,7 @@ const MoviesCard = ({ boxTitle, reducerResponse, primary }) => {
             onClick={() => goToNextSlide()}
           />
         </Arrows>
-      </div>
-    </CardBox>
+    </CardBox></>
   );
 };
 export default MoviesCard;

@@ -17,13 +17,13 @@ const MovieDetails = ({
   credits,
 }) => {
   const [play, setPlay] = useState(0);
+  const id = window.location.pathname.substr(15);
 
   useEffect(() => {
-    const id = window.location.pathname.substr(15);
-
+    console.log(id);
     getMovieDetails(id);
     getMovieCredits(id);
-  }, [getMovieDetails, getMovieCredits]);
+  }, [id, getMovieDetails, getMovieCredits]);
 
   const handleClick = () => {
     if (!play) {
@@ -129,7 +129,7 @@ const MovieDetails = ({
           <h3 className="dot-Details">.</h3>
           <h3 className="certifications-Details">
             <div className="certifications-box-Details">
-              {!hasCertification() ? "NF" : isCertification()}
+              {!hasCertification("US") ? "NF" : isCertification()}
             </div>
           </h3>
         </div>
