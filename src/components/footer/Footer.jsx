@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import {Link} from "react-router-dom"
 
 import { ReactComponent as MovieDbLogo } from "../../assets/moviedb_logo.svg";
 import { ReactComponent as Github } from "../../assets/github.svg";

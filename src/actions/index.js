@@ -10,7 +10,6 @@ import {
   MOVIE_CREDITS,
 } from "./actions.type";
 
-//typeOfSearch receives the string 'movie' or 'person'
 export const searchMovies = (query, year) => async (dispatch) => {
   const response = await movieDbInstance
     .get("/search/movie", {
@@ -87,19 +86,11 @@ export const getUpcomingMovies = () => async (dispatch) => {
   });
 };
 
-// go to get-trending in the api again!
 export const getTrendingMovies = () => async (dispatch) => {
-  const response = await movieDbInstance.get("/trending/movie/week");
+  const response = await movieDbInstance.get("/trending/movie/day");
 
   dispatch({
     type: TRENDING_MOVIES,
     payload: response,
   });
 };
-
-// export const fetchImage = () => async (dispatch, configuration, image) => {
-//   const config = await configuration;
-//   const getImages = await config;
-
-//   dispatch({type: "FETCH_IMAGE", payload: getImages[image]})
-// };

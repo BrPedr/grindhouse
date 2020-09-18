@@ -1,168 +1,166 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { ReactComponent as ArrowRight } from "../../assets/arrow-right.svg";
 import { ReactComponent as ArrowLeft } from "../../assets/arrow-left.svg";
 
 import emtpyMovie from "../../assets/emtpyMovie.jpg";
 
-export const Container = styled.div`
-  display: flex;
+export const ContainerCast = styled.div`
+  height: 400px;
+
+  @media (max-width: 1120px) {
+    height: 250px;
+  }
 `;
 
 const Title = styled.div`
   color: ${(props) => (props.primary ? "black" : "#d33694")};
   width: 100%;
-  white-space: nowrap;
+  white-space: wrap;
   font-family: "Roboto", sans-serif;
   text-align: center;
   font-weight: 500;
   margin-top: 1em;
-`;
-
-export const Slide = styled.div`
-  width: 199px;
-  height: 262px;
-  margin-left: 2.5em;
 
   @media (max-width: 1120px) {
-    width: 130px;
-    height: 192px;
-    margin-left: 0.6em;
+    font-size: 0.8em;
   }
 `;
 
-const Arrows = styled.div`
-  position: absolute;
-  right: 3%;
-  bottom: 3%;
-`;
-
-export const Image = styled.img`
+export const ImageCast = styled.img`
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  width: 199px;
+  height: 262px;
   filter: brightness(0.6);
-  box-shadow: 5px 5px 10px #1f0a42; 
+  box-shadow: 5px 5px 10px #1f0a42;
 
   &:hover {
     filter: brightness(1.1);
     transform: translateY(-5%) scale(1.1);
     transition: 1s;
   }
-`;
-
-const CardBox = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  overflow: hidden;
-  background-color: ${(props) => (props.primary ? "#ffffff" : "")};
-  height: 500px;
 
   @media (max-width: 1120px) {
-    height: 340px;
-    flex-direction: column;
-    align-items: flex-start;
+    width: 100px;
+    height: 162px;
   }
 `;
 
-// const BoxTitle = styled.h1`
-//   font-family: "Roboto", sans-serif;
-//   text-transform: uppercase;
-//   width: 100%;
-//   white-space: nowrap;
-//   font-weight: 900;
-//   font-size: 3em;
-//   letter-spacing: 4px;
-//   text-align: center;
-//   color: ${(props) => (props.primary ? "black" : "#d33694")};
-// `;
-
-const MoviesCard = ({ boxTitle, reducerResponse, primary }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const length = reducerResponse.length;
-
-  const goToPrevSlide = () => {
-    let index = activeIndex;
-    let currentLength = length;
-    if (index < 1) {
-      index = currentLength - 4;
-    } else {
-      index--;
-    }
-    setActiveIndex(index);
+const CastSlider = ({ reducerResponse, primary }) => {
+  const settings = {
+    infinite: true,
+    draggable: true,
+    swipeToSlide: true,
+    speed: 500,
+    slidesToShow: reducerResponse.length < 10 ? reducerResponse.length : 10,
+    arrows: true,
+    prevArrow: <ArrowLeft />,
+    nextArrow: <ArrowRight />,
+    responsive: [
+      {
+        breakpoint: 2203,
+        settings: {
+          slidesToShow: reducerResponse.length < 9 ? reducerResponse.length : 9,
+        },
+      },
+      {
+        breakpoint: 2003,
+        settings: {
+          slidesToShow: reducerResponse.length < 8 ? reducerResponse.length : 8,
+        },
+      },
+      {
+        breakpoint: 1803,
+        settings: {
+          slidesToShow: reducerResponse.length < 7 ? reducerResponse.length : 7,
+        },
+      },
+      {
+        breakpoint: 1603,
+        settings: {
+          slidesToShow: reducerResponse.length < 6 ? reducerResponse.length : 6,
+        },
+      },
+      {
+        breakpoint: 1403,
+        settings: {
+          slidesToShow: reducerResponse.length < 5 ? reducerResponse.length : 5,
+        },
+      },
+      {
+        breakpoint: 1120,
+        settings: {
+          slidesToShow: reducerResponse.length < 7 ? reducerResponse.length : 7,
+        },
+      },
+      {
+        breakpoint: 1020,
+        settings: {
+          slidesToShow: reducerResponse.length < 6 ? reducerResponse.length : 6,
+        },
+      },
+      {
+        breakpoint: 820,
+        settings: {
+          slidesToShow: reducerResponse.length < 5 ? reducerResponse.length : 5,
+        },
+      },
+      {
+        breakpoint: 720,
+        settings: {
+          slidesToShow: reducerResponse.length < 4 ? reducerResponse.length : 4,
+        },
+      },
+      {
+        breakpoint: 620,
+        settings: {
+          slidesToShow: reducerResponse.length < 3 ? reducerResponse.length : 3,
+        },
+      },
+    ],
   };
 
-  const goToNextSlide = () => {
-    let index = activeIndex;
-    let currentLength = length;
-    if (index === currentLength - 4) {
-      index = 0;
-    } else {
-      index++;
-    }
-
-    setActiveIndex(index);
-  };
-
-  const renderSlide = reducerResponse.map((movie, index) => (
-    <Slide
-      key={index}
-      // activeIndex={() => activeIndex}
-      className={
-        index === activeIndex ||
-        index === activeIndex + 1 ||
-        index === activeIndex + 2 ||
-        index === activeIndex + 3 ||
-        index === activeIndex + 4 ||
-        index === activeIndex + 5 ||
-        index === activeIndex + 6 ||
-        index === activeIndex + 7 ||
-        index === activeIndex + 8 ||
-        index === activeIndex + 9
-          ? "active"
-          : "inactive"
-      }
-    >
-      <Link to={`/movie-details/${movie.id}`}>
-        {movie.profile_path !== null ? (
-          <Image
-            key={movie.id}
-            src={`https://image.tmdb.org/t/p/w185${movie.profile_path}`}
-            alt="actor"
-          />
-        ) : (
-          <Image key={movie.id} src={emtpyMovie} alt="actor" />
-        )}
-      </Link>
-      <Title primary={primary}>{movie.name}&nbsp;&nbsp;&nbsp; as</Title>
-      <Title primary={primary}>{movie.character}</Title>
-    </Slide>
-  ));
+  const renderSlide = (
+    <Slider {...settings}>
+      {reducerResponse.map((movie, index) => (
+        <div
+          key={index}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {movie.profile_path !== null ? (
+            <ImageCast
+              key={movie.id}
+              src={`https://image.tmdb.org/t/p/w185${movie.profile_path}`}
+              alt="actor"
+            />
+          ) : (
+            <ImageCast
+              key={movie.id}
+              src={emtpyMovie}
+              className="emptyMovie"
+              alt="actor"
+            />
+          )}
+          <Title primary={primary}>{movie.name}&nbsp;&nbsp;&nbsp; as</Title>
+          <Title primary={primary}>{movie.character}</Title>
+        </div>
+      ))}
+    </Slider>
+  );
 
   return (
     <>
       <h2 className="ratings-title-Details">Cast</h2>
-      <CardBox primary={primary}>
-        <Container style={{ paddingBottom: "100px" }}>{renderSlide}</Container>
-        <Arrows>
-          <ArrowLeft
-            id="arrow-left"
-            onClick={() => goToPrevSlide()}
-            style={{ cursor: "pointer" }}
-          />
-          <ArrowRight
-            id="arrow-right"
-            style={{ marginLeft: "35px", cursor: "pointer" }}
-            onClick={() => goToNextSlide()}
-          />
-        </Arrows>
-      </CardBox>
+      <ContainerCast>{renderSlide}</ContainerCast>
     </>
   );
 };
-export default MoviesCard;
+export default CastSlider;

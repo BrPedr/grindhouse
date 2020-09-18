@@ -38,12 +38,6 @@ const Banner = ({ getTopRatedMovies, topMovies }) => {
     }
     return () => clearTimeout(timer);
   });
-  // useEffect(() => {
-  //   if (!topMovies.movies) {
-  //     return;
-  //   }
-  //   getMovieDetails(topMovies.movies.results[counter].id);
-  // }, [counter])
 
   const renderBannerLoop = () => {
     if (!topMovies.movies) {

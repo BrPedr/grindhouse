@@ -67,19 +67,6 @@ const MovieDetails = ({
       }
     };
 
-    //  const isCertification = () => {
-    //    const type = hasCertification("US").release_dates[0].type;
-
-    //    if (type === 4) {
-    //      return "R";
-    //    }
-    //    if (type === 1) {
-    //      return "G";
-    //    }
-    //  };
-    // console.log(hasCertification("US").release_dates[0].certification);
-    //  const x = () => Object.values(castAndCrew.find((crew) => crew));
-    // console.log(getJob("Director"));
     return (
       <React.Fragment>
         <div className="container-Details">
@@ -113,11 +100,15 @@ const MovieDetails = ({
               </h2>
             </div>
             <div className="trailer-Details">
-              <PlayButton
-                onClick={() => handleClick()}
-                style={{ cursor: "pointer" }}
-              />
-              <h3 className="play-text-Details">WATCH THE TRAILER</h3>
+              {!movie.videos.results[0] ? null : (
+                <>
+                  <PlayButton
+                    onClick={() => handleClick()}
+                    style={{ cursor: "pointer" }}
+                  />
+                  <h3 className="play-text-Details">WATCH THE TRAILER</h3>{" "}
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -164,18 +155,6 @@ const MovieDetails = ({
           <CastSlider reducerResponse={credits.credits.data.cast} />
         )}
       </>
-      {/* <Container>
-        <Slide style={{ display: "flex", flexDirection: "row" }}>
-          {!credits.credits
-            ? null
-            : credits.credits.data.cast.map((star) => (
-                <Image
-                  src={`https://image.tmdb.org/t/p/w185${star.profile_path}`}
-                  alt="actor"
-                />
-              ))}
-        </Slide>
-      </Container> */}
     </React.Fragment>
   );
 };

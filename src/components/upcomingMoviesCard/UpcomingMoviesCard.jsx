@@ -27,15 +27,6 @@ const UpcomingMoviesCard = ({ getUpcomingMovies, upcoming }) => {
           {!upcoming.movies
             ? <Spinner />
             : upcoming.movies.data.results.map((movie) => (
-                // <React.Fragment>
-                //   <div keys={movie.id} className="image-container">
-                //     <img
-                //       src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
-                //       alt=""
-                //     />
-                //     <h4 className="title">{movie.original_title}</h4>
-                //   </div>
-                // </React.Fragment>
                 <div keys={movie.id}>
                   <MoviesCard
                     title={movie.title}
